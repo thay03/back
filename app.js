@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -8,16 +10,11 @@ const PORT = process.env.PORT || 3000;
 
 // Middleware para parse de JSON
 app.use(express.json());
-// Adicione a URL EXATA do seu frontend do Codespaces:
-const corsOptions = {
-    origin: 'https://solid-space-doodle-q76v4jvj4vvq3xjwv-5500.app.github.dev',
-    credentials: true
-  };
-  
-  app.use(cors(corsOptions));
+
+app.use(cors());
 
 // Conectando ao MongoDB
-mongoose.connect('mongodb://localhost:27017/mydatabasenew', {
+mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => {
@@ -30,7 +27,6 @@ mongoose.connect('mongodb://localhost:27017/mydatabasenew', {
 app.use('/api/creators', creatorRoutes);
 app.use('/api/games', gameRoutes);
 
-// Inicia o servidor
 app.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}`);
 });
