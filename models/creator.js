@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 const creatorSchema = new mongoose.Schema({
   name: { type: String, required: true },
   password: { type: String, required: true },
-  profile: { type: String, enum: ['admin', 'user'], required: true }
+  profile: { type: String, enum: ['game-master', 'creator'], required: true }
 });
 
 // Criptografar senha antes de salvar
