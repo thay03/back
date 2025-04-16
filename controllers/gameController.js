@@ -1,6 +1,6 @@
 const Game = require('../models/game');
 
-// Criar nova plantação
+// Criar novo jogo
 exports.createGame = async (req, res) => {
     try {
         const { name, description, responsible } = req.body;
@@ -12,7 +12,7 @@ exports.createGame = async (req, res) => {
     }
 };
 
-// Listar todas as plantações
+// Listar todos od jogos
 exports.getGames = async (req, res) => {
     try {
         const games = await Game.find().populate('responsible', 'name');
@@ -34,7 +34,7 @@ exports.getGameById = async (req, res) => {
     }
 };
 
-// Atualizar plantação
+// Atualizar jogo
 exports.updateGame = async (req, res) => {
     try {
         const { id } = req.params;
@@ -49,7 +49,7 @@ exports.updateGame = async (req, res) => {
     }
 };
 
-// Excluir plantação
+// Excluir jogo
 exports.deleteGame = async (req, res) => {
     try {
         const { id } = req.params;
