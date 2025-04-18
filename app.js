@@ -3,8 +3,8 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const creatorRoutes = require('./routes/creatorRoutes');
-const gameRoutes = require('./routes/gameRoutes');
+const directorRoutes = require('./routes/directorRoutes');
+const movieRoutes = require('./routes/movieRoutes');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -24,8 +24,8 @@ mongoose.connect(process.env.MONGODB_URI, {
 });
 
 // Usando rotas
-app.use('/api/creators', creatorRoutes);
-app.use('/api/games', gameRoutes);
+app.use('/api/directors', directorRoutes);
+app.use('/api/movies', movieRoutes);
 
 app.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}`);
